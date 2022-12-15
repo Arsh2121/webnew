@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 
-// var Schema = mongoose.Schema; Is this necessary???
 var userSchema = new mongoose.Schema({
     "userName" : {
         "type" : String,
@@ -35,11 +34,14 @@ module.exports.initialize = function () {
 
 module.exports.registerUser = function(userData) {
     return new Promise(function (resolve, reject) { 
-        if (userData.password == userData.password2) {
+        if (userData.password == userData.password2) 
+        {
             bcrypt.hash(userData.password, 10, function(err, hash) {
+               
                 if (err) {
                     reject("There was an error encrypting the password");
                 }
+
                 userData.password = hash;
                 let newUser = new User(userData);
                 newUser.save(function(err) {
@@ -63,6 +65,8 @@ module.exports.registerUser = function(userData) {
 
 
 
+
+
 module.exports.checkUser = function(userData) {
     return new Promise(function (resolve, reject) {
         User.find({ userName: userData.userName }).exec()
@@ -79,9 +83,7 @@ module.exports.checkUser = function(userData) {
                             dateTime: (new Date()).toString(),
                             userAgent: userData.userAgent
                         });
-                        
-                        // using updateOne instead of update
-                        User.updateOne({ userName: users[0].userName },
+                                                User.updateOne({ userName: users[0].userName },
                             { $set: { loginHistory: users[0].loginHistory } }
                         ).exec()
                         .then(function() { 

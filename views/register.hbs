@@ -6,6 +6,8 @@
             <div class="alert alert-danger"><strong>Error:</strong> {{errorMsg}}</div>
         {{/if}}
         {{#unless successMsg }}
+
+        
         <form method="post" action="/register">
             <div class="row">
                 <div class="col-md-12">
@@ -15,6 +17,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -22,6 +26,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -38,6 +44,8 @@
             </div>
             <input type="submit" class="btn btn-success pull-right" value="Register" />
         </form>
+
+
         {{else}}
             <div class="alert alert-success">
                 <strong>Success:</strong> {{successMsg}}

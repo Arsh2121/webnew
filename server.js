@@ -4,11 +4,11 @@
 *  assignment has been copied manually or electronically from any other source (including web sites) or 
 *  distributed to other students.
 * 
-*  Name: Manreet Kaur
-*  Student ID: 153851217
-*  Date: 30/11/2022
+*  Name: Arshdeep Arshdeep
+*  Student ID: 142292218
+*  Date: 12/13/2022
 *
-*  Online (Cyclic) Link: https://better-erin-bikini.cyclic.app
+*  Online (Cyclic) Link: 
 *
 ********************************************************************************/ 
 
@@ -30,41 +30,55 @@ const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
 
 cloudinary.config({
-    cloud_name: 'dga12xwb2',
-    api_key: '694932861513843',
-    api_secret: '8kE3Cp8pA7PAe4RzWO4ICj9jO1Y',
+
+    cloud_name: 'diif2rrm2',
+
+    api_key: '139564824677626',
+
+    api_secret: 'S834mcTeuXkHUxRl8f4dapjENS8',
+
     secure: true
+
 });
 const upload = multer();
 
-app.engine(".hbs", exphbs.engine({
-    extname: ".hbs",
-    helpers: {
-        navLink: function(url, options){
-            return '<li' + 
-                ((url == app.locals.activeRoute) ? ' class="active" ' : '') + 
-                '><a href="' + url + '">' + options.fn(this) + '</a></li>';
+app.engine(
+    ".hbs",
+    exphbs.engine({
+      extname: ".hbs",
+      helpers: {
+        navLink: function (url, options) {
+          return (
+            "<li" +
+            (url == app.locals.activeRoute ? ' class="active" ' : "") +
+            '><a href="' +
+            url +
+            '">' +
+            options.fn(this) +
+            "</a></li>"
+          );
         },
         equal: function (lvalue, rvalue, options) {
-            if (arguments.length < 3)
-                throw new Error("Handlebars Helper equal needs 2 parameters");
-            if (lvalue != rvalue) {
-                return options.inverse(this);
-            } else {
-                return options.fn(this);
-            }
+          if (arguments.length < 3)
+            throw new Error("Handlebars Helper equal needs 2 parameters");
+          if (lvalue != rvalue) {
+            return options.inverse(this);
+          } else {
+            return options.fn(this);
+          }
         },
-        safeHTML: function(context){
-            return stripJs(context);
-        },
-        formatDate: function(dateObj){
-            let year = dateObj.getFullYear();
-            let month = (dateObj.getMonth() + 1).toString();
-            let day = dateObj.getDate().toString();
-            return `${year}-${month.padStart(2, '0')}-${day.padStart(2,'0')}`;
-        }
-    }
-}));
+        safeHTML: function (context) {
+          return stripJs(context);
+          },
+          formatDate: function (dateObj) {
+              let year = dateObj.getFullYear();
+              let month = (dateObj.getMonth() + 1).toString();
+              let day = dateObj.getDate().toString();
+              return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+          }
+      },
+    })
+  );
 
 app.set('view engine', '.hbs');
 
@@ -72,7 +86,7 @@ app.use(express.static('public'));
 
 app.use(clientSessions({
     cookieName: "session", // this is the object name that will be added to 'req'
-    secret: "my secret is iron man is stronger than thor", // this should be a long un-guessable string.
+    secret: "Iron man is still alive!!!! not dead.", // this should be a long un-guessable string.
     duration: 2 * 60 * 1000, // duration of the session in milliseconds (2 minutes)
     activeDuration: 1000 * 60 // the session will be extended by this many ms each request (1 minute)
 }));

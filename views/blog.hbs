@@ -7,8 +7,7 @@
                 <br /><br />
                 {{#safeHTML data.post.body}}{{/safeHTML}}
                 <br /><br />
-                <strong>Category:</strong> {{data.post.category}}<br />
-                
+                <strong>Category:</strong> {{data.post.category}}<br /> 
                 <strong>Last Updated:</strong> {{#formatDate data.post.updatedAt}}{{/formatDate}}
             </article>
         {{else}}

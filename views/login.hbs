@@ -2,8 +2,11 @@
     <div class="col-md-12">
         <h2>Log In</h2>
         <hr />
+
         {{#if errorMsg}}
             <div class="alert alert-danger"><strong>Error:</strong> {{errorMsg}}</div>
+       
+       
         {{/if}}
         <form method="post" action="/login">
             <div class="row">
@@ -14,6 +17,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -21,6 +25,8 @@
                     </div>
                 </div>
             </div>
+
+
             <input type="submit" class="btn btn-success pull-right" value="Login" />
         </form>
     </div>
